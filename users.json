@@ -1,6 +1,17 @@
-{
-    "hi": {
-        "password": "hi",
-        "email": "codentd18925@gmail.com"
+[
+    {
+        "username": "dungz",
+        "password": "123",
+        "email": "cd@gmail.com"
+    },
+    {
+        "username": "hoàng",
+        "password": "123",
+        "email": "123@gmail.com"
+    },
+    {
+        "username": "hello",
+        "password": "123",
+        "email": "hi@gmail.com"
     }
-}
+]

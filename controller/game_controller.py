@@ -14,6 +14,7 @@ class GameController:
         self.bird = Bird(images.bird)
         self.pipes = []
         self.score = 0
+        self.last_score = 0       # ✅ thêm dòng này
         self.active = True
         self.show_leaderboard = False
         self.scores = load_scores()
@@ -50,16 +51,26 @@ class GameController:
             for pipe in self.pipes[:]:
                 pipe.move()
                 pipe.draw(self.screen)
+                # Cập nhật điểm khi chim vượt qua ống
+                if not pipe.passed and pipe.x + pipe.width < self.bird.rect.centerx:
+                    pipe.passed = True
+                    self.score += 1
+
+                # Xoá ống nếu ra khỏi màn hình
                 if pipe.off_screen():
                     self.pipes.remove(pipe)
-                    self.score += 0.5
+
 
             self.active = self.kiem_tra_va_cham()
-        else:
-            if self.score > 0:
-                self.scores = save_score(self.username, int(self.score))
-                self.high_score = max([s["score"] for s in self.scores])
-            self.score = 0
+
+            # Khi game vừa thua
+            if not self.active:
+                self.last_score = self.score   # ✅ lưu điểm trước khi reset
+                if self.score > 0:
+                    self.scores = save_score(self.username, int(self.score))
+                    self.high_score = max([s["score"] for s in self.scores])
+       
+        
 
     def them_ong(self):
         from entities import Pipe

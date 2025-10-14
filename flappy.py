@@ -59,7 +59,7 @@ while True:
         draw_text(f"High Score: {controller.high_score}", 30, GameConfig.SCREEN_WIDTH//2, 90, (255,255,255))
     else:
         draw_text("GAME OVER", 50, GameConfig.SCREEN_WIDTH//2, 100, (255,0,0))
-        draw_text(f"Your Score: {int(controller.score)}", 40, GameConfig.SCREEN_WIDTH//2, 160, (255,255,0))
+        draw_text(f"Your Score: {int(controller.last_score)}", 40, GameConfig.SCREEN_WIDTH//2, 160, (255,255,0))
         draw_text("Press SPACE to Restart", 30, GameConfig.SCREEN_WIDTH//2, 500, (0,255,0))
         draw_text("Press L to View Leaderboard", 25, GameConfig.SCREEN_WIDTH//2, 540, (255,255,255))
 
