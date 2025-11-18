@@ -29,9 +29,9 @@ class Pipe:
 
     def __init__(self, image, x):
         self.image = image
-        self.x = x                        # ✅ vị trí theo trục X
-        self.width = Pipe.WIDTH           # ✅ chiều rộng để tính điểm
-        self.passed = False               # ✅ để không cộng điểm nhiều lần
+        self.x = x                        
+        self.width = Pipe.WIDTH         
+        self.passed = False              
 
         # Tạo độ cao ngẫu nhiên cho ống
         self.height = random.randint(200, 400)
@@ -47,19 +47,19 @@ class Pipe:
         self.bottom_rect.top = self.height + Pipe.GAP // 2
 
     def move(self):
-        # ✅ cập nhật vị trí x và rect
+       
         self.x -= Pipe.SPEED
         self.top_rect.centerx = self.x
         self.bottom_rect.centerx = self.x
 
     def draw(self, screen):
-        # Lật ảnh ống trên
+       
         flip_pipe = pygame.transform.flip(self.image, False, True)
         screen.blit(flip_pipe, self.top_rect)
         screen.blit(self.image, self.bottom_rect)
 
     def off_screen(self):
-        # Xóa khi ra khỏi màn hình
+       
         return self.top_rect.right < -50
 
 
