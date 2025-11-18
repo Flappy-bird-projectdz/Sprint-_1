@@ -12,7 +12,7 @@ clock = pygame.time.Clock()
 images = Images()
 images.load()
 
-# === Lấy username từ config.json ===
+# === Lấy username  ===
 username = "guest"
 if os.path.exists("config.json"):
     try:
@@ -25,14 +25,14 @@ if os.path.exists("config.json"):
 # === Khởi tạo bộ điều khiển trò chơi ===
 controller = GameController(screen, images, username=username)
 
-# === Font để vẽ chữ ===
+# === Vẽ tý chữ cho đẹp ===
 def draw_text(text, size, x, y, color=(255,255,255)):
     font_local = pygame.font.Font(None, size)
     label = font_local.render(text, True, color)
     rect = label.get_rect(center=(x, y))
     screen.blit(label, rect)
 
-# === Vòng lặp game chính ===
+# === Vòng lặp game  ===
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -47,7 +47,7 @@ while True:
         if event.type == controller.SPAWNPIPE and controller.active:
             controller.them_ong()
 
-    # === Vẽ nền ===
+    # === Vẽ cái lền ===
     screen.blit(images.background, (0, 0))
 
     # === Cập nhật game ===
@@ -68,7 +68,7 @@ while True:
             for i, s in enumerate(controller.scores[:5], start=1):
                 draw_text(f"{i}. {s['user']} - {s['score']}", 35, GameConfig.SCREEN_WIDTH//2, 270 + i*40, (255,255,0))
 
-    # === Vẽ nền đất ===
+    # === Vẽ lền đất ===
     screen.blit(images.base, (0, GameConfig.SCREEN_HEIGHT - 50))
 
     pygame.display.update()
